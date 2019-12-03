@@ -3,13 +3,9 @@ require_once __DIR__. "/autoload/autoload.php";
 $sqlnew = "Select DISTINCT * from  sanpham,loaisp where sanpham.Maloai = loaisp.Maloai AND DonViTinh NOT IN ('Máy')";
 $sanpham = $db -> fetchsql($sqlnew);
 // unset($_SESSION['cart']);
-
 ?>
 <?php require_once __DIR__. "/layout/header.php"; ?>
 <link rel="stylesheet" href="index.css">
-
-
-
 <div class="title">
         <h6><strong>TẤT CẢ SẢN PHẨM</strong></h6>  <div class="search-container">
         <form action="/Home/timkiem">

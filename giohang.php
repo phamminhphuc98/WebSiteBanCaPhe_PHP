@@ -1,8 +1,14 @@
 <?php
 require_once __DIR__ . "/autoload/autoload.php";
 $sum = 0;
+if(! isset($_SESSION['cart']) || count($_SESSION['cart'])==0)
+{
+    echo"<script>alert('Không có sản phẩm nào trong giỏ hàng'); location.href='index.php'</script>";
+}
 ?>
 <?php require_once __DIR__ . "/layout/header.php"; ?>
+    
+
 
 <link rel="stylesheet" href="giohang.css">
 <br>
@@ -27,7 +33,7 @@ $sum = 0;
                         <td><?php echo $stt?></td>
                         <td><a href="#"><img src="Images/<?php echo $cart['hinhminhhoa'] ?>" /></a></td>
                         <td><?php echo $cart['tensp'] ?></td>
-                        <td><input type="number" name="soluong" min="0" id="@item.MaSP" class="txtSLGH" value="<?php echo $cart['soluong'] ?>" /><a class="fa fa-upload btn-Update" onclick="CapNhat(@item.MaSP)" aria-hidden="true"></a><a class="fa fa-trash-o btn-Delete" aria-hidden="true" onclick="XoaSP(@item.MaSP)"></a></td>
+                        <td><input type="number" name="soluong" min="0" id="@item.MaSP" class="txtSLGH" value="<?php echo $cart['soluong'] ?>" /><a class="fa fa-upload btn-Update" onclick="CapNhat()" aria-hidden="true"></a><a class="fa fa-trash-o btn-Delete" aria-hidden="true" href="xoasp.php" onclick="XoaSP()"></a></td>
                         <td><span id="DonGia"><?php echo $cart['dongia'] ?></span></td>
                         <td><?php echo  $cart['soluong'] * $cart['dongia'] ?></td>
                     </tr>
@@ -37,7 +43,7 @@ $sum = 0;
     </table>
     <br>
     <div id="TongTien">
-    <h4>Tổng Cộng: <span id="tongtien"></span><?php echo $_SESSION['tongtien']?>VND</h4>    <input style="visibility:hidden" value="@Session["username"]" id="checkemail" /><p style="float:right;"><a href="index.php" class="btn btn-success">Tiếp tục mua</a> <a href="" class="btn btn-success">Thanh toán</a>
+    <h4>Tổng Cộng: <span id="tongtien"></span><?php echo $_SESSION['tongtien']?>VND</h4>    <input style="visibility:hidden" value="@Session["username"]" id="checkemail" /><p style="float:right;"><a href="index.php" class="btn btn-success">Tiếp tục mua</a> <a href="thanhtoan.php" class="btn btn-success">Thanh toán</a>
 </p>
 
 </div>

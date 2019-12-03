@@ -148,6 +148,12 @@ class Database
         $result = mysqli_query($this->link,$sql) or die("Lỗi  truy vấn fetchID " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
+    public function fetchIDKH($table , $id )
+    {
+        $sql = "SELECT * FROM {$table} WHERE MaKH = $id ";
+        $result = mysqli_query($this->link,$sql) or die("Lỗi  truy vấn fetchID " .mysqli_error($this->link));
+        return mysqli_fetch_assoc($result);
+    }
 
     public function fetchOne($table , $query)
     {
